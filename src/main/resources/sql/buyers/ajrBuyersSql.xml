@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.idp.biz.buyers.dao.AjrBuyersDao">
+
+	<parameterMap id="parameterMap" type="com.idp.biz.buyers.entity.AjrBuyers"></parameterMap>
+	<resultMap id="resultMap" type="com.idp.biz.buyers.entity.AjrBuyers">
+		<result property="id" column="id"/>
+		<result property="pid" column="pid"/>
+		<result property="count" column="count"/>
+		<result property="title" column="title"/>
+		<result property="ip" column="ip"/>
+		<result property="custName" column="cust_name"/>
+		<result property="content" column="content"/>
+		<result property="custEmail" column="cust_email"/>
+		<result property="custCorporate" column="cust_corporate"/>
+		<result property="custTelephone" column="cust_telephone"/>
+		<result property="temp1" column="temp1"/>
+		<result property="temp2" column="temp2"/>
+		<result property="updateDate" column="update_date"/>
+	</resultMap>
+	
+	<sql id="columnSql">
+		<trim suffixOverrides=",">
+			t.id,
+			t.pid,
+			t.count,
+			t.title,
+			t.ip,
+			t.cust_name,
+			t.content,
+			t.cust_email,
+			t.cust_corporate,
+			t.cust_telephone,
+			t.temp1,
+			t.temp2,
+			t.update_date,
+	 	</trim>
+	</sql>
+	
+	<select id="findByPage" parameterMap="parameterMap" resultMap="resultMap">
+		select
+			<include refid="columnSql"></include>
+		from ajr_buyers t
+		<where>
+			<if test="title != null and title != ''">
+				and t.title = #{title}			
+			</if>
+			<if test="custName != null and custName != ''">
+				and t.cust_name = #{custName}			
+			</if>
+			<if test="custTelephone != null and custTelephone != ''">
+				and t.cust_telephone = #{custTelephone}			
+			</if>
+			<if test="updateDateStart != null">
+				and t.update_date >= #{updateDateStart}
+			</if>
+			<if test="updateDateEnd != null">
+				and t.update_date <![CDATA[<]]> #{updateDateEnd} 
+			</if>
+		</where>
+	</select>
+	
+	<select id="find" parameterMap="parameterMap" resultMap="resultMap">
+		select
+			<include refid="columnSql"></include>
+		from ajr_buyers t
+		<where>
+			<if test="title != null and title != ''">
+				and t.title = #{title}			
+			</if>
+			<if test="custName != null and custName != ''">
+				and t.cust_name = #{custName}			
+			</if>
+			<if test="custTelephone != null and custTelephone != ''">
+				and t.cust_telephone = #{custTelephone}			
+			</if>
+			<if test="updateDateStart != null">
+				and t.update_date >= #{updateDateStart}
+			</if>
+			<if test="updateDateEnd != null">
+				and t.update_date <![CDATA[<]]> #{updateDateEnd} 
+			</if>
+		</where>
+	</select>
+	
+	<select id="getById" parameterType="java.lang.String" resultMap="resultMap">
+		select
+			<include refid="columnSql"></include>
+		from ajr_buyers t
+		where t.id = #{value}
+	</select>
+	
+	<insert id="add" parameterMap="parameterMap">
+		insert into ajr_buyers
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+			id,
+			</if>
+			<if test="pid != null">
+			pid,
+			</if>
+			<if test="count != null">
+			count,
+			</if>
+			<if test="title != null">
+			title,
+			</if>
+			<if test="ip != null">
+			ip,
+			</if>
+			<if test="custName != null">
+			cust_name,
+			</if>
+			<if test="content != null">
+			content,
+			</if>
+			<if test="custEmail != null">
+			cust_email,
+			</if>
+			<if test="custCorporate != null">
+			cust_corporate,
+			</if>
+			<if test="custTelephone != null">
+			cust_telephone,
+			</if>
+			<if test="temp1 != null">
+			temp1,
+			</if>
+			<if test="temp2 != null">
+			temp2,
+			</if>
+			<if test="updateDate != null">
+			update_date,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+			#{id},
+			</if>
+			<if test="pid != null">
+			#{pid},
+			</if>
+			<if test="count != null">
+			#{count},
+			</if>
+			<if test="title != null">
+			#{title},
+			</if>
+			<if test="ip != null">
+			#{ip},
+			</if>
+			<if test="custName != null">
+			#{custName},
+			</if>
+			<if test="content != null">
+			#{content},
+			</if>
+			<if test="custEmail != null">
+			#{custEmail},
+			</if>
+			<if test="custCorporate != null">
+			#{custCorporate},
+			</if>
+			<if test="custTelephone != null">
+			#{custTelephone},
+			</if>
+			<if test="temp1 != null">
+			#{temp1},
+			</if>
+			<if test="temp2 != null">
+			#{temp2},
+			</if>
+			<if test="updateDate != null">
+			#{updateDate},
+			</if>
+		</trim>
+	</insert>
+	
+	<update id="update" parameterMap="parameterMap">
+		update ajr_buyers
+		<set>
+			pid = #{pid},
+			count = #{count},
+			title = #{title},
+			ip = #{ip},
+			cust_name = #{custName},
+			content = #{content},
+			cust_email = #{custEmail},
+			cust_corporate = #{custCorporate},
+			cust_telephone = #{custTelephone},
+			temp1 = #{temp1},
+			temp2 = #{temp2},
+			update_date = #{updateDate},
+		</set>
+		where id = #{id}
+	</update>
+	
+	<update id="updateNotNull" parameterMap="parameterMap">
+		update ajr_buyers
+		<set>
+			<if test="pid != null">
+			pid = #{pid},
+			</if>
+			<if test="count != null">
+			count = #{count},
+			</if>
+			<if test="title != null">
+			title = #{title},
+			</if>
+			<if test="ip != null">
+			ip = #{ip},
+			</if>
+			<if test="custName != null">
+			cust_name = #{custName},
+			</if>
+			<if test="content != null">
+			content = #{content},
+			</if>
+			<if test="custEmail != null">
+			cust_email = #{custEmail},
+			</if>
+			<if test="custCorporate != null">
+			cust_corporate = #{custCorporate},
+			</if>
+			<if test="custTelephone != null">
+			cust_telephone = #{custTelephone},
+			</if>
+			<if test="temp1 != null">
+			temp1 = #{temp1},
+			</if>
+			<if test="temp2 != null">
+			temp2 = #{temp2},
+			</if>
+			<if test="updateDate != null">
+			update_date = #{updateDate},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete" parameterType="java.lang.String">
+		delete from ajr_buyers where id = #{value}
+	</delete>
+	
+	<delete id="batchDelete" parameterType="java.util.List">
+		delete from ajr_buyers where id in
+		<foreach collection="list" item="item" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</delete>
+	
+</mapper>
