@@ -1,32 +1,35 @@
 <section class="content-header">
 	<h1>
-		客户留言管理
-    	<small>数据列表</small>
+		客户留言管理 <small>数据列表</small>
 	</h1>
 </section>
 <section class="content" xmlns:th="http://www.thymeleaf.org">
 	<div class="row">
-    	<div class="col-xs-12">
-        	<div class="box">
-	            <div class="box-header">
-	              	<form id="ajrBuyersSearchForm" role="form" class="form-inline form-search">
+		<div class="col-md-12">
+			<div class="box">
+				<div class="box-header">
+					<form id="ajrBuyersSearchForm" role="form"
+						class="form-inline form-search">
 						<div class="form-group">
-							<label class="control-label">主题：</label>
-							<input type="text" id="title" class="form-control" />
+							<label class="col-sm-2 control-label" for="title">主题</label>
+							<div class="col-sm-10">
+								<input type="text" id="title" class="form-control" />
+							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label">客户姓名：</label>
-							<input type="text" id="custName" class="form-control" />
+							<label class="control-label">客户姓名：</label> <input type="text"
+								id="custName" class="form-control" />
 						</div>
 						<div class="form-group">
-							<label class="control-label">客户电话：</label>
-							<input type="text" id="custTelephone" class="form-control" />
+							<label class="control-label">客户电话：</label> <input type="text"
+								id="custTelephone" class="form-control" />
 						</div>
 						<div class="form-group">
-							<label class="control-label">创建时间：</label>
-							<input type="text" id="updateDateStart" class="form-control datepicker" readonly="readonly" style="width:100px;"/>
-							-
-							<input type="text" id="updateDateEnd" class="form-control datepicker" readonly="readonly" style="width:100px;"/>
+							<label class="control-label">创建时间：</label> <input type="text"
+								id="updateDateStart" class="form-control datepicker"
+								readonly="readonly" style="width: 100px;" /> - <input
+								type="text" id="updateDateEnd" class="form-control datepicker"
+								readonly="readonly" style="width: 100px;" />
 						</div>
 					</form>
 					<button type="button" id="addBtn" class="btn btn-success">
@@ -35,18 +38,22 @@
 					<button type="button" id="delBtn" class="btn btn-danger">
 						<i class="fa fa-trash-o icon-right-5"></i>删除
 					</button>
-			      	<button type="button" id="resetBtn" class="pull-right btn btn-default">
-			          	<i class="fa fa-refresh icon-right-5"></i>重置
-			      	</button>
-			      	<button type="button" id="searchBtn" class="pull-right btn btn-primary icon-right-5">
-			          	<i class="fa fa-search icon-right-5"></i>查询
-			      	</button>
-	            </div>
-            	<div class="box-body">
-	            	<table id="ajrBuyersDataTable" class="table table-bordered table-hover">
-	            		<thead>
-	            			<tr>
-	            				<th><input type="checkbox" class="checkAll" onclick="checkAll(this)"/></th>
+					<button type="button" id="resetBtn"
+						class="pull-right btn btn-default">
+						<i class="fa fa-refresh icon-right-5"></i>重置
+					</button>
+					<button type="button" id="searchBtn"
+						class="pull-right btn btn-primary icon-right-5">
+						<i class="fa fa-search icon-right-5"></i>查询
+					</button>
+				</div>
+				<div class="box-body">
+					<table id="ajrBuyersDataTable"
+						class="table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th><input type="checkbox" class="checkAll"
+									onclick="checkAll(this)" /></th>
 								<th>产品ID</th>
 								<th>预购数量</th>
 								<th>主题</th>
@@ -56,12 +63,12 @@
 								<th>客户电子邮箱</th>
 								<th>客户公司名称</th>
 								<th>客户电话</th>
-	            				<th>操作</th>
-	            			</tr>
-	            		</thead>
-	            	</table>
-            	</div>
-        	</div>
+								<th>操作</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+			</div>
 		</div>
 	</div>
 	<script th:src="@{/js/buyers/ajrBuyers/ajrBuyersList.js}"></script>

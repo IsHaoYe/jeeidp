@@ -1,79 +1,95 @@
 <section class="content-header">
 	<h1>
-		客户留言管理
-		<small>数据维护</small>
+		客户留言管理 <small>数据维护</small>
 	</h1>
 </section>
 <section class="content" xmlns:th="http://www.thymeleaf.org">
 	<div class="row">
-    	<div class="col-xs-12">
-        	<div class="box">
-	            <div class="box-body">
-		            <form id="ajrBuyersForm" role="form" class="form-horizontal">
+		<div class="col-xs-12">
+			<div class="box">
+				<div class="box-body">
+					<form id="ajrBuyersForm" role="form" class="form-horizontal">
 						<div class="form-group">
 							<label class="col-md-3 control-label">产品ID:</label>
 							<div class="col-md-5">
-								<input type="text" name="pid" class="form-control" th:value="${ajrBuyers?.pid}"  maxlength="255"/>
+								<input type="text" name="pid" class="form-control"
+									th:value="${ajrBuyers?.pid}" maxlength="255" />
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-md-3 control-label">预购数量:</label>
 							<div class="col-md-5">
-								<input type="text" name="count" class="form-control" th:value="${ajrBuyers?.count}" required="required" maxlength="10"/>
+								<input type="text" name="count" class="form-control"
+									th:value="${ajrBuyers?.count}" required="required"
+									maxlength="10" />
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-md-3 control-label">主题:</label>
 							<div class="col-md-5">
-								<input type="text" name="title" class="form-control" th:value="${ajrBuyers?.title}" required="required" maxlength="255"/>
+								<input type="text" name="title" class="form-control"
+									th:value="${ajrBuyers?.title}" required="required"
+									maxlength="255" />
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-md-3 control-label">ip:</label>
 							<div class="col-md-5">
-								<input type="text" name="ip" class="form-control" th:value="${ajrBuyers?.ip}" required="required" maxlength="64"/>
+								<input type="text" name="ip" class="form-control"
+									th:value="${ajrBuyers?.ip}" required="required" maxlength="64" />
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-md-3 control-label">客户姓名:</label>
 							<div class="col-md-5">
-								<input type="text" name="custName" class="form-control" th:value="${ajrBuyers?.custName}" required="required" maxlength="200"/>
+								<input type="text" name="custName" class="form-control"
+									th:value="${ajrBuyers?.custName}" required="required"
+									maxlength="200" />
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-md-3 control-label">内容:</label>
 							<div class="col-md-5">
-								<textarea name="content" class="form-control" rows="5" th:text="${ajrBuyers?.content}" required="required" maxlength="255"></textarea>
+								<textarea name="content" class="form-control" rows="5"
+									th:text="${ajrBuyers?.content}" required="required"
+									maxlength="255"></textarea>
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-md-3 control-label">客户电子邮箱:</label>
 							<div class="col-md-5">
-								<input type="text" name="custEmail" class="form-control" th:value="${ajrBuyers?.custEmail}" required="required" maxlength="16"/>
+								<input type="text" name="custEmail" class="form-control"
+									th:value="${ajrBuyers?.custEmail}" required="required"
+									maxlength="16" />
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-md-3 control-label">客户公司名称:</label>
 							<div class="col-md-5">
-								<input type="text" name="custCorporate" class="form-control" th:value="${ajrBuyers?.custCorporate}" required="required" maxlength="16"/>
+								<input type="text" name="custCorporate" class="form-control"
+									th:value="${ajrBuyers?.custCorporate}" required="required"
+									maxlength="16" />
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-md-3 control-label">客户电话:</label>
 							<div class="col-md-5">
-								<input type="text" name="custTelephone" class="form-control" th:value="${ajrBuyers?.custTelephone}" required="required" maxlength="20"/>
+								<input type="text" name="custTelephone" class="form-control"
+									th:value="${ajrBuyers?.custTelephone}" required="required"
+									maxlength="20" />
 							</div>
 						</div>
-					    <input type="hidden" name="id" th:value="${ajrBuyers?.id}"/>
-		            </form>
-	            </div>
-	            <div class="box-footer">
-	            	<div class="col-md-9 col-md-offset-3">
+						<input type="hidden" name="id" th:value="${ajrBuyers?.id}" />
+					</form>
+				</div>
+				<div class="box-footer">
+					<div class="col-md-9 col-md-offset-3">
 						<button type="button" class="btn btn-primary" onclick="save()">保存</button>
-			          	<button type="button" class="btn btn-default" onclick="forwardPage('/ajrBuyers/init')">取消</button>
-			        </div>
-	            </div>
-	        </div>
+						<button type="button" class="btn btn-default"
+							onclick="forwardPage('/ajrBuyers/init')">取消</button>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<script th:src="@{/js/buyers/ajrBuyers/ajrBuyers.js}"></script>

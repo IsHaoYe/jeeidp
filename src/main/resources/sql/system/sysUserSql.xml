@@ -2,10 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.idp.system.dao.SysUserDao">
 
-	<parameterMap id="parameterMap"
-		type="com.idp.system.entity.SysUser"></parameterMap>
-	<resultMap id="resultMap"
-		type="com.idp.system.entity.SysUser">
+	<parameterMap id="parameterMap" type="com.idp.system.entity.SysUser"></parameterMap>
+	<resultMap id="resultMap" type="com.idp.system.entity.SysUser">
 		<id property="id" column="id" />
 		<result property="username" column="username" />
 		<result property="password" column="password" />
@@ -34,8 +32,7 @@
 		t.user_photo
 	</sql>
 
-	<select id="findByPage" parameterMap="parameterMap"
-		resultMap="resultMap">
+	<select id="findByPage" parameterMap="parameterMap" resultMap="resultMap">
 		select
 		<include refid="queryColumn"></include>
 		,
@@ -58,8 +55,7 @@
 		order by t.create_date asc
 	</select>
 
-	<select id="find" parameterMap="parameterMap"
-		resultMap="resultMap">
+	<select id="find" parameterMap="parameterMap" resultMap="resultMap">
 		select
 		<include refid="queryColumn"></include>
 		from sys_user t
@@ -78,8 +74,7 @@
 		order by t.create_date asc
 	</select>
 
-	<select id="getById" parameterType="java.lang.String"
-		resultMap="resultMap">
+	<select id="getById" parameterType="java.lang.String" resultMap="resultMap">
 		select
 		<include refid="queryColumn"></include>
 		,
@@ -91,8 +86,7 @@
 		#{value}
 	</select>
 
-	<select id="findByUsername" parameterType="java.lang.String"
-		resultMap="resultMap">
+	<select id="findByUsername" parameterType="java.lang.String" resultMap="resultMap">
 		select
 		<include refid="queryColumn"></include>
 		,
@@ -101,7 +95,8 @@
 		from sys_user t
 		left join sys_org o on o.id = t.org_id
 		where t.del_flag
-		= '0' and t.username = #{value}
+		= '0'
+		and t.username = #{value}
 	</select>
 
 	<insert id="add" parameterMap="parameterMap">
@@ -144,7 +139,7 @@
 				create_user,
 			</if>
 			<if test="createDate != null">
-				create_user,
+				create_date,
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -258,8 +253,7 @@
 
 	<delete id="batchDelete" parameterType="java.util.List">
 		delete from sys_user where id in
-		<foreach collection="list" item="item" open="(" close=")"
-			separator=",">
+		<foreach collection="list" item="item" open="(" close=")" separator=",">
 			#{item}
 		</foreach>
 	</delete>
